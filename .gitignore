@@ -1,3 +1,5 @@
+# Webpack build directory
+dist/
 # Logs
 logs
 *.log
