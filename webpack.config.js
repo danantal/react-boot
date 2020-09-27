@@ -19,28 +19,24 @@ module.exports = {
                 test: /\.css$|\.less$/,
                 use: [
                     require.resolve('style-loader'),
-                    {
-                        loader: require.resolve('css-loader'),
-                        options: {
-                            importLoaders: 1,
-                        },
-                    },
+                    require.resolve('css-loader'),
                     {
                         loader: require.resolve('postcss-loader'),
                         options: {
-                            ident: 'postcss',
-                            plugins: () => [
-                                autoprefixer({
-                                    browsers: [
-                                        'last 2 versions',
-                                        'not ie < 9', // React doesn't support IE8 anyway
-                                    ]
-                                }),
-                            ],
+                            postcssOptions: {
+                                plugins: () => [
+                                    autoprefixer({
+                                        browsers: [
+                                            'last 2 versions',
+                                            'not ie < 9', // React doesn't support IE8 anyway
+                                        ]
+                                    }),
+                                ],
+                            }
                         },
                     },
                     {
-                        loader: require.resolve('less-loader')                        
+                        loader: require.resolve('less-loader')
                     },
                 ],
             },
